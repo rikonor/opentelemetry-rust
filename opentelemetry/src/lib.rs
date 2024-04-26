@@ -247,17 +247,8 @@ pub mod time {
     use std::time::SystemTime;
 
     #[doc(hidden)]
-    #[cfg(any(
-        not(target_arch = "wasm32"),
-        all(target_arch = "wasm32", target_os = "wasi")
-    ))]
     pub fn now() -> SystemTime {
-        SystemTime::now()
-    }
-
-    #[doc(hidden)]
-    #[cfg(all(target_arch = "wasm32", not(target_os = "wasi")))]
-    pub fn now() -> SystemTime {
-        SystemTime::UNIX_EPOCH + std::time::Duration::from_millis(js_sys::Date::now() as u64)
+        // TODO(rikonor): Use hard-coded time
+        SystemTime::UNIX_EPOCH
     }
 }

@@ -27,9 +27,6 @@ once_cell = { workspace = true }
 pin-project-lite = { workspace = true, optional = true }
 thiserror = { workspace = true }
 
-[target.'cfg(all(target_arch = "wasm32", not(target_os = "wasi")))'.dependencies]
-js-sys = "0.3.63"
-
 [features]
 default = ["trace"]
 trace = ["pin-project-lite"]
